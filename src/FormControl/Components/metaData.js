@@ -9,7 +9,7 @@ export let initialState =   {
         touched: false,
         validationRules: {
           minLength: 4,
-          maxLength: 8,
+          maxLength: 20,
           isRequired: true,
          },
       },
@@ -73,7 +73,6 @@ export let initialState =   {
         },
       },
 
-      address: {
         line1: {
             type: 'text',
             value: '',
@@ -136,7 +135,7 @@ export let initialState =   {
         },
         country: {
             type: 'select',
-            value: [],
+            value: '',
             placeholder: 'Country',
             valid: false,
             errorMsg: '',
@@ -144,15 +143,14 @@ export let initialState =   {
             validationRules: {
               isRequired: true,
             },
-            multiple: true,
             options: [
               { value: 'India', displayValue: 'India' },
               { value: 'Australia', displayValue: 'Australia'},
               { value: 'China', displayValue: 'China'},
               { value: 'USA', displayValue: 'USA'}
             ]
-          }
-      },
+          },
+
 
       radio: {
         type: 'radio',

@@ -9,7 +9,7 @@ const Input = (props) => {
   }
 	return (  
         <div>
-            <label htmlFor={props.name} >{props.title} : </label>
+            <label htmlFor={props.name} >{props.title}  </label>
             <input
                 className={formControl}
                 id={props.name}

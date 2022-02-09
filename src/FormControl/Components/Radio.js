@@ -4,7 +4,7 @@ const Radio = (props) => {
 
 	return( 
         <div className="form-group">
-            <label htmlFor={props.name} className="form-label">{props.title} : </label>
+            <label htmlFor={props.name} className="form-label">{props.title}  </label>
                 {props.options.map((option,index) => {
                     return (
                         <label key={index} className="radio-inline">
