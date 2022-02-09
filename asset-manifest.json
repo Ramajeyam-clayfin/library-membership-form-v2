@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/library-membership-form-v2/static/css/main.f1a87211.css",
+    "main.js": "/library-membership-form-v2/static/js/main.7cfe87ab.js",
+    "index.html": "/library-membership-form-v2/index.html",
+    "main.f1a87211.css.map": "/library-membership-form-v2/static/css/main.f1a87211.css.map",
+    "main.7cfe87ab.js.map": "/library-membership-form-v2/static/js/main.7cfe87ab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1a87211.css",
+    "static/js/main.7cfe87ab.js"
+  ]
+}
