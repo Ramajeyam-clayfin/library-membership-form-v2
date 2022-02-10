@@ -187,6 +187,7 @@ export let initialState =   {
           { value: 'Research & Reference', displayValue: 'Research & Reference' }
         ]
       },
+      
       about: {
         type: 'textarea',
         value: '',

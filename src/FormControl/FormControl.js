@@ -7,7 +7,7 @@ import Textarea from './Components/Textarea';
 import Dropdown from './Components/Dropdown';
 import Checkbox from './Components/Checkbox';
 import Radio from './Components/Radio';
-import Button from './Components/Button'
+import Buttong from './Components/Button';
 
 export default class FormControl extends Component {
 
@@ -23,67 +23,75 @@ export default class FormControl extends Component {
     changeHandler = event => {
     
         const name = event.target.name;
+        const title = event.target.name1;
         console.log("Name : "+name);
-        const updatedControls = { ...this.state.formControls };
-        const updatedFormElement = { ...updatedControls[name] };
-        console.log(updatedFormElement);
+        console.log("title : "+title);
+        const updatedControls = { ...this.state.formControls }; //all values in formcontrols
+        const updatedFormElement = { ...updatedControls[name] }; // in formcontrols stores only the value where the change is happened
+        // console.log(updatedFormElement);
   
-        let value;
-        let selectedOptions;
-        let newValArray;
+        let value; //used to store the values of where the change is happened
+        let selectedOptions; //used to store the values of where the change is happened
+        let newValArray; //used to store the values of where the change is happened
+
+        if(name === 'address' )
+        {
+
+        }
   
         if (updatedControls[name].value instanceof Array &&
-            updatedControls[name].type === 'select' )
+            updatedControls[name].type === 'select' )                 //check if the change is happened in dropdown box
         {
             selectedOptions = event.target.selectedOptions;
             // newValArray = [...selectedOptions].map(option => option.value);
             value = selectedOptions.value;
-            console.log("Select - Value : "+value);
+            // console.log("Select - Value : "+value);
         }
         else 
         {
             value = event.target.value;
 
             if( updatedControls[name].value instanceof Array &&
-                updatedControls[name].type === 'checkbox' ) 
+                updatedControls[name].type === 'checkbox' )         //check if the change is happened in checkbox box
             {
-                console.log("Before Checkbox Value : "+value);
-                if(updatedControls[name].value.indexOf(value) > -1) 
+                // console.log("Before Checkbox Value : "+value);
+                if(updatedControls[name].value.indexOf(value) > -1)  // ckecks if checkbox value is having the same value or not using indexof array method
                 {
-                    newValArray = 
-                    updatedControls[name].value.filter(s => s !== value)
+                    newValArray = updatedControls[name].value.filter(s => s !== value) // filter and stores in newValArray except the same value that is passed 
+                    console.log("Checkbox 1 Value : "+value)
                 } 
                 else 
                 {
-                    newValArray = [...updatedControls[name].value, value];
+                    newValArray = [...updatedControls[name].value, value]; // if no duplicate values passed then using spread concat the values
+                    console.log("Checkbox  2 Value : "+value)
                 }
-                value = newValArray;
+                value = newValArray; // stores the values in newValArray into value
                 console.log("Checkbox Value : "+value)
             }
-            else 
+            else    //else the values are stored in values 
             {
                 value = event.target.value
                 console.log("Value : "+value)
             }
         }
        
-        updatedFormElement.value = value;
+        updatedFormElement.value = value; // change the value  which has been changed and stores in locally
         updatedFormElement.touched = true;
   
         let ValidationResult = Validation(value, updatedFormElement.validationRules);
-        console.log(ValidationResult);
-        updatedFormElement.valid = ValidationResult.valid;
+        // console.log(ValidationResult);
+        updatedFormElement.valid = ValidationResult.valid; // change the valid  which has been changed and stores in locally
 
         if ((!updatedFormElement.valid) && updatedFormElement.touched) //for update the error message value
         {
-          updatedFormElement.errorMsg = ValidationResult.errorMsg
+          updatedFormElement.errorMsg = ValidationResult.errorMsg // change the errorMsg  which has been changed and stores in locally
         }
         else 
         {
           updatedFormElement.errorMsg = ''
         }
   
-        updatedControls[name] = updatedFormElement;
+        updatedControls[name] = updatedFormElement; // change the local data where the change is happened
   
         let formIsValid = true;
 
@@ -94,7 +102,7 @@ export default class FormControl extends Component {
   
         this.setState(
             {
-                formControls: updatedControls,
+                formControls: updatedControls, // here we change the global value according to local data
                 formIsValid: formIsValid
             }
         );
@@ -105,7 +113,7 @@ export default class FormControl extends Component {
         const formData = {};
         for (let formElementId in this.state.formControls) 
         {
-            formData[formElementId] = this.state.formControls[formElementId].value;
+            formData[formElementId] = this.state.formControls[formElementId].value; // in formData{} stores only values of each datas
         }
         let newLine = '\r\n';
         alert(
@@ -132,7 +140,7 @@ export default class FormControl extends Component {
                     inputType={'text'}
                     title={"Name : "}
                     name={'name'}
-                    placeholder={this.state.formControls.name.placeholder}
+                    placeholder={this.state.formControls.name.placeholder} //Enter Your Name
                     value={this.state.formControls.name.value}
                     handleChange={this.changeHandler}
                     touched={this.state.formControls.name.touched}
@@ -144,6 +152,7 @@ export default class FormControl extends Component {
                     inputType={'number'}
                     title={"Age : "}
                     name={'age'}
+                    // name1={'age1'}
                     placeholder={this.state.formControls.age.placeholder}
                     value={this.state.formControls.age.value}
                     handleChange={this.changeHandler}
@@ -292,7 +301,7 @@ export default class FormControl extends Component {
                     errorMsg={this.state.formControls.about.errorMsg}
                 />
 
-                <Button 
+                <Buttong 
                     action = {this.formSubmitHandler}
                     type = {'primary'} 
                     title = {'Submit'} 
@@ -300,7 +309,7 @@ export default class FormControl extends Component {
                     disabled={! this.state.formIsValid}
                 /> { /*Submit */ }
                 
-                <Button 
+                <Buttong
                     action = {this.handleClearForm}
                     type = {'secondary'}
                     title = {'Clear'}

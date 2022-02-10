@@ -1,7 +1,8 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 
-const Button = (props) => {
+const Buttong = (props) => {
 
 	let disabled = false;
 
@@ -11,15 +12,17 @@ const Button = (props) => {
 	}
 		
 	return(
-        <button 
+        <Button 
             style= {props.style} 
             className = {props.type==='primary'? 'btn btn-primary' : 'btn btn-secondary'}
             onClick= {props.action} 
-            disabled={disabled}> 
-            {props.title} 
-        </button>
+            disabled={disabled} >
+
+          {props.title}
+
+        </Button>
     );
 }
 
 
-export default Button;
+export default Buttong;

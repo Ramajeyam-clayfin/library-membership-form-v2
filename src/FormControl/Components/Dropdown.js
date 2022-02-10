@@ -1,4 +1,7 @@
 import React from 'react';
+import { Form, Col, Row } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const Dropdown = (props) => {
@@ -10,28 +13,36 @@ const Dropdown = (props) => {
 	}
 
 	return(
+		
         <div className="form-group">
-			<label htmlFor={props.name}> {props.title} </label>
-		    <select
-		      id = {props.name}
-			  name={props.name}
-			  multiple={props.multiple}
-		      value={props.value}
-			  onChange={props.handleChange}
-		      className={formControl}
-			>
-		      <option value="" disabled>{props.placeholder}</option>
-                {props.options.map((option,index) => {
-                    return (
-                        <option
-                            key={index}
-                            value={option.value}
-                            label={option.displayValue}>{option.displayValue}
-                        </option>
-                    );
-                })}
-		    </select>
+			<Form.Group as={Row} className="mb-3">
+			   <Form.Label column sm={3}  htmlFor={props.name} style={{textAlign:"end"}}>
+			   	{props.title}
+			   </Form.Label>
+			<Col sm={5}>
+				<Form.Select
+					id = {props.name}
+					name={props.name}
+					multiple={props.multiple}
+					value={props.value}
+					onChange={props.handleChange}
+					className={formControl}
+				>
+					<option value="" disabled>{props.placeholder}</option>
+					{props.options.map((option,index) => {
+						return (
+							<option
+								key={index}
+								value={option.value}
+								label={option.displayValue}>{option.displayValue}
+							</option>
+						);
+					})}
+				</Form.Select>
+			</Col>
+		    
 			{ props.errorMsg  ? <p style={{color: "red"}}>{props.errorMsg}</p>: null }
+			</Form.Group>
 		</div>
 	)
 }	

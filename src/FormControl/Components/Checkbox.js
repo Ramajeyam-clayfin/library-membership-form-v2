@@ -1,4 +1,6 @@
 import React from 'react';
+import { Form, Col, Row } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Checkbox = (props) => {
   
@@ -10,26 +12,31 @@ const Checkbox = (props) => {
   }
   
 	return( 
+       
         <div className="form-group">
-            <label htmlFor={props.name} className="form-label">{props.title}</label>
-            <div className={formControl}>
+            <Form.Group as={Row} className="mb-3">
+                <Form.Label column sm={3} htmlFor={props.name}style={{textAlign:"end"}}>
+                    {props.title}
+                </Form.Label>
+                <Col sm={3} className={formControl} style={{textAlign:"start"}}>
                 {props.options.map((option,index) => {
                     return (
-                        <label key={index} className="checkbox-inline" >
-                            <input
-                                id = {props.name}
-                                name={props.name}
-                                onChange={props.handleChange}
-                                value={option.value}
-                                checked={ props.value.indexOf(option.value) > -1 }
-                                type="checkbox" 
-                            /> 
-                            {option.displayValue}
-                        </label>
+                        
+                            <Form.Check 
+                                 id = {props.name}
+                                 name={props.name}
+                                 onChange={props.handleChange}
+                                 label={option.displayValue}
+                                 value={option.value}
+                                 checked={ props.value.indexOf(option.value) > -1 }
+                                 type="checkbox" 
+                            />
+                        
                     );
                 })}
-            </div>
+                </Col>
             { props.errorMsg  ? <p style={{color: "red"}}>{props.errorMsg}</p>: null }
+            </Form.Group>
         </div>
     );
 
