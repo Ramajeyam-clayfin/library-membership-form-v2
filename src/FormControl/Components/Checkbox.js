@@ -30,12 +30,16 @@ const Checkbox = (props) => {
                                  value={option.value}
                                  checked={ props.value.indexOf(option.value) > -1 }
                                  type="checkbox" 
+                                 isInvalid={ !!props.errorMsg}
                             />
-                        
+                                
                     );
                 })}
+                                {/* <Form.Control.Feedback type='invalid'>{ props.errorMsg }</Form.Control.Feedback> */}
+
+
                 </Col>
-            { props.errorMsg  ? <p style={{color: "red"}}>{props.errorMsg}</p>: null }
+                { props.errorMsg  ? <p style={{color: "red"}}>{props.errorMsg}</p>: null }
             </Form.Group>
         </div>
     );

@@ -26,9 +26,10 @@ const Textarea = (props) => {
                     value={props.value}
                     onChange={props.handleChange}
                     placeholder={props.placeholder} 
+                    isInvalid={ !!props.errorMsg}
                 />
-           
-            { props.errorMsg  ? <p style={{color: "red"}}>{props.errorMsg}</p>: null }
+                <Form.Control.Feedback type='invalid'>{ props.errorMsg }</Form.Control.Feedback>
+                {/* { props.errorMsg  ? <p style={{color: "red"}}>{props.errorMsg}</p>: null } */}
             </Col>
             </Form.Group>
         </div>

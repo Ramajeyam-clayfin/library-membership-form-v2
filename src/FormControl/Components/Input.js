@@ -18,24 +18,24 @@ const Input = (props) => {
                 </Form.Label>
                 <Col sm={5}>
                     <Form.Control
-                    className={formControl}
-                    id={props.name}
-                    value={props.value}
-                    type={props.inputType}
-                    placeholder={props.placeholder}
-                    name={props.name}
-                    onChange={props.handleChange}
+                        className={formControl}
+                        id={props.name}
+                        value={props.value}
+                        type={props.inputType}
+                        placeholder={props.placeholder}
+                        name={props.name}
+                        onChange={props.handleChange}
+                        isInvalid={ !!props.errorMsg}
+                        isValid={props.touched && !props.errorMsg}
                     />
+                    <Form.Control.Feedback type='invalid' >{ props.errorMsg }</Form.Control.Feedback>
+                    
                 </Col>
             </Form.Group>
-            
-            {props.errorMsg  ?
-                <p style={{color:"red", marginBottom: "15px", fontSize: "15px"}}> {props.errorMsg} </p> 
-                : null
-            }
-            
+              
         </div>
     )
 }
 
 export default Input;
+
