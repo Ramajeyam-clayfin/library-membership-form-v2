@@ -23,6 +23,7 @@ const Checkbox = (props) => {
                     return (
                         
                             <Form.Check 
+                                key={index}
                                  id = {props.name}
                                  name={props.name}
                                  onChange={props.handleChange}
